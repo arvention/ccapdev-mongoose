@@ -38,8 +38,9 @@ const signupController = {
             pw: pw
         });
 
-        // upon adding a user to the database, redirect the client to `/success`
-        // using HTTP GET and passing values using URL
+        // upon adding a user to the database, redirects the client to `/success`
+        // using HTTP GET, defined in `../routes/routes.js`, passing values using URL
+        // which calls getSuccess() method defined in `./successController.js`
         res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
     }
 
