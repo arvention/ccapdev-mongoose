@@ -12,6 +12,8 @@ const controller = {
     // executed when the client sends an HTTP GET request `/`
     // as defined in `../routes/routes.js`
     getIndex: function (req, res) {
+
+        // render `../views/index.hbs`
         res.render('index');
     }
 }
