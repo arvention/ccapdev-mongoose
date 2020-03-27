@@ -25,6 +25,9 @@ const profileController = {
         // the fourth parameter is a callback function
         // this called when the database returns a value saved in variable `result`
         db.findOne(User, query, projection, function(result) {
+
+            // if the user exists in the database
+            // render the profile page with their details
             if(result != null) {
                 var details = {
                     fName: result.fName,
@@ -32,7 +35,10 @@ const profileController = {
                     idNum: result.idNum
                 };
                 res.render('profile', details);
-            } else {
+            }
+            // if the user does not exist in the database
+            // render the error page
+            else {
                 res.render('error');
             }
         });
