@@ -34,11 +34,14 @@ const profileController = {
                     lName: result.lName,
                     idNum: result.idNum
                 };
+
+                // render `../views/profile.hbs`
                 res.render('profile', details);
             }
             // if the user does not exist in the database
             // render the error page
             else {
+                // render `../views/error.hbs`
                 res.render('error');
             }
         });
