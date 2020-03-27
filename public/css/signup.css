@@ -1,0 +1,28 @@
+form {
+    width: 50%;
+}
+
+input {
+    font-family: Roboto;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+.field, #submit {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.field {
+    padding-left: 8px;
+    padding-right: 8px;
+    border-style: none;
+    background-color: #E3E3E3;
+}
+
+#submit {
+    font-weight: 700;
+    margin-top: 20px;
+}
