@@ -1,5 +1,5 @@
 
-// import module database from `../models/db.js`
+// import module `database` from `../models/db.js`
 const db = require('../models/db.js');
 
 // import module `User` from `../models/UserModel.js`
