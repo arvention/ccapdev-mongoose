@@ -34,7 +34,7 @@ a {
 }
 
 a.link {
-    color: #0053ab;
+    color: #01376e;
 }
 
 a.link:hover {
@@ -51,7 +51,7 @@ p {
     position: fixed;
     width: 100%;
     height: 50px;
-    background-color: #0053ab;
+    background-color: #01376e;
     font-family: Roboto;
     font-size: 18px;
     justify-content: stretch;
@@ -64,14 +64,14 @@ nav > a {
     line-height: 50px;
 
     color: white;
-    background-color: #0053ab;
+    background-color: #01376e;
 
     text-decoration: none;
     text-align: center;
 }
 
 nav > a:hover {
-    background-color: #00438a;
+    background-color: #00274f;
 }
 
 #container {
@@ -115,14 +115,14 @@ nav > a:hover {
 }
 
 button, input[type='submit'] {
-    background-color: #0053ab;
-    border: 4px solid #0053ab;
+    background-color: #01376e;
+    border: 4px solid #01376e;
     color: white;
 }
 
 button:hover, input[type='submit']:hover {
     background-color: white;
-    border: 4px solid #0053ab;
-    color: #0053ab;
+    border: 4px solid #01376e;
+    color: #01376e;
     cursor: pointer;
 }
