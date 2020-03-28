@@ -1,6 +1,6 @@
 
 // defines an object which contains functions executed as callback
-// when a client requests for `home` paths in the server
+// when a client requests for `index` paths in the server
 const controller = {
 
     // executed when the client sends an HTTP GET request `/favicon.ico`
