@@ -39,5 +39,36 @@ Your web browser should display the screen below:
 
 7. Go to the sign-up page either using the menu item or the button. Enter sample user details. In this web application, we will use the ID number as a key - thus it should be unique for each user. However, as of now, we have not yet implemented it. This will be implemented using AJAX in the next tutorial. There are no form validations as of now, except that it checks if all fields have been properly filled out.
 
+Check the file [`views\signup.hbs`](https://github.com/arvention/ccapdev-mongoose/blob/master/views/signup.hbs) and focus on the function `postSignUp()`. Shown below is the function as excerpted from the file:
+
+```
+postSignUp: function (req, res) {
+
+    var fName = req.body.fName;
+    var lName = req.body.lName;
+    var idNum = req.body.idNum;
+    var pw = req.body.pw;
+
+    db.insertOne(User, {
+        fName: fName,
+        lName: lName,
+        idNum: idNum,
+        pw: pw
+    });
+
+    res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
+}
+```
+
 The picture below displays a properly filled form:
 ![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/signup.png "Sign-up Page")
+
+8. Upon clicking the submit button, the web application should display the success screen. This screen displays a welcome message - displaying the first name, the last name, and a link to the profile of the registered user.
+
+The picture below displays the success screen for the details that we have entered earlier:
+![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/success.png "Success Page")
+
+If you have entered the same sample details, the URL displayed by your web browser should be:
+```
+http://localhost:9090/success?fName=Ned&lName=Stark&idNum=11312345
+```
