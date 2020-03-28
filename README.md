@@ -35,4 +35,9 @@ http://localhost:9090/
 ```
 
 Your web browser should display the screen below:
-![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/index.png "Index page")
+![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/index.png "Index Page")
+
+7. Go to the sign-up page either using the menu item or the button. Enter sample user details. In this web application, we will use the ID number as a key - thus it should be unique for each user. However, as of now, we have not yet implemented it. This will be implemented using AJAX in the next tutorial. There are no form validations as of now, except that it checks if all fields have been properly filled out.
+
+The picture below displays a properly filled form:
+![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/signup.png "Sign-up Page")
