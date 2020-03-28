@@ -2,7 +2,7 @@
 // import module `mongoose`
 const mongoose = require('mongoose');
 
-// import module User from `../models/UserModel.js`
+// import module `User` from `../models/UserModel.js`
 const User = require('./UserModel.js');
 
 // ccapdev-mongoose is the name of the database
@@ -103,5 +103,6 @@ const database = {
 
 }
 
-// exports the object `database` (defined above) when another script exports from this file
+// exports the object `database` (defined above)
+// when another script exports from this file
 module.exports = database;
