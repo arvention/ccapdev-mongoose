@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Sign Up </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
+</head>
+<body>
+
+{{> header}}
+
+<div id="container">
+    <div id="content">
+        <h1 id="title"> Sign Up. </h1>
+        <form id="signup" method="post">
+            <input type="text" name="fName" id="fName" class="field" placeholder="First Name" required> <br>
+            <input type="text" name="lName" id="lName" class="field" placeholder="Last Name" required> <br>
+            <input type="number" name="idNum" id="idNum" class="field" placeholder="Id Number" required> <br>
+            <input type="password" name="pw" id="pw" class="field" placeholder="Password"> <br>
+            <input type="submit" id="submit" value="SUBMIT">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
