@@ -18,5 +18,6 @@ const controller = {
     }
 }
 
-// exports the object `controller` (defined above) when another script exports from this file
+// exports the object `controller` (defined above)
+// when another script exports from this file
 module.exports = controller;
