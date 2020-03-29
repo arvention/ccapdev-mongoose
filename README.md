@@ -125,3 +125,7 @@ If you have entered the same sample details, the URL displayed by your web brows
 ```
 http://localhost:9090/success?fName=Ned&lName=Stark&idNum=11312345
 ```
+9. Click the link to your profile.
+
+The picture below displays the profile screen of the user which we have registered earlier:
+![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/profile.png "Success Page")
