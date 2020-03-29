@@ -129,3 +129,5 @@ http://localhost:9090/success?fName=Ned&lName=Stark&idNum=11312345
 
 The picture below displays the profile screen of the user which we have registered earlier:
 ![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/profile.png "Success Page")
+
+10. Read the rest of the documentation in the `README.md` files in each folder and in the in-line comments in each file. Try registering various users and access their profiles by typing their URL :sunglasses:
