@@ -39,7 +39,30 @@ Your web browser should display the screen below:
 
 7. Go to the sign-up page either using the menu item or the button. Enter sample user details. In this web application, we will use the ID number as a key - thus it should be unique for each user. However, as of now, we have not yet implemented it. This will be implemented using AJAX in the next tutorial. There are no form validations as of now, except that it checks if all fields have been properly filled out.
 
-Check the file [`views\signup.hbs`](https://github.com/arvention/ccapdev-mongoose/blob/master/views/signup.hbs) and focus on the function `postSignUp()`. Shown below is the function as excerpted from the file:
+The picture below displays a properly filled form:
+![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/signup.png "Sign-up Page")
+
+8. Review the file [`views\signup.hbs`](https://github.com/arvention/ccapdev-mongoose/blob/master/views/signup.hbs), focus on the `<form>` element, and take note of its elements and their attributes. Shown below is the `<form>` as excerpted from the file:
+
+```
+<form id="signup" method="post">
+    <input type="text" name="fName" id="fName" class="field" placeholder="First Name" required> <br>
+    <input type="text" name="lName" id="lName" class="field" placeholder="Last Name" required> <br>
+    <input type="number" name="idNum" id="idNum" class="field" placeholder="Id Number" required> <br>
+    <input type="password" name="pw" id="pw" class="field" placeholder="Password"> <br>
+    <input type="submit" id="submit" value="SUBMIT">
+</form>
+```
+
+Upon clicking the submit button, the client sends an HTTP POST request to the server. We set this by setting the attribute `method` of the element `form` to `post`. Using HTTP POST method, the client will send the values, identified through their corresponding value for the `name` attribute, entered by the user through the body of the request.
+
+Check the file [`routes\routes.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/routes/routes.js). Shown below is a line as excerpted from the file:
+
+```
+app.post('/signup', signupController.postSignUp);
+```
+
+When the server receives an HTTP POST request for the path `/signup`, it executes the function `postSignUp()`. Check the file [`controllers\signUpController.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/controllers/signUpController.js) and focus on the function `postSignUp()`. Shown below is the function as excerpted from the file:
 
 ```
 postSignUp: function (req, res) {
@@ -60,10 +83,40 @@ postSignUp: function (req, res) {
 }
 ```
 
-The picture below displays a properly filled form:
-![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/signup.png "Sign-up Page")
+To get the values sent to us by the client through body of the request object, we have to get it through the `req.body` object. The `name` of a specific form element, as we have discussed earlier, is used to identify a specific value sent through the request body. Thus to get the value of the `<input>` element whose `name` value is equal to `fName`, we can access it through `req.body.fName`.
 
-8. Upon clicking the submit button, the web application should display the success screen. This screen displays a welcome message - displaying the first name, the last name, and a link to the profile of the registered user.
+We then insert the values entered by the user to our database using the `insertOne()` function defined in [`models\db.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/models/db.js).
+
+The last line in the excerpted code of [`controllers\signUpController.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/controllers/signUpController.js) redirects us to send an HTTP GET request to path `/success`. The code below excerpts a line from [`routes\routes.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/routes/routes.js) which describes the function call given a client sends an HTTP GET request for path `/success`.
+
+```
+app.get('/success', successController.getSuccess);
+```
+
+When the server receives an HTTP GET request for the path `/success`, it executes the function `getSuccess()`. Check the file [`controllers\successController.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/controllers/successController.js) and focus on the function `getSuccess()`. Shown below is the function as excerpted from the file:
+
+```
+getSuccess: function (req, res) {
+
+    var details = {
+        fName: req.query.fName,
+        lName: req.query.lName,
+        idNum: req.query.idNum
+    };
+
+    res.render('success', details);
+}
+```
+
+To get the values sent to us by the client through the query string of the URL, we have to get it through the `req.query` object. Following the values that we have entered in the form, the last line of the `postSignUp()` function of [`controllers\signUpController.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/controllers/signUpController.js) sent this query string:
+
+```
+/success?fName=Ned&lName=Stark&idNum=11312345
+```
+
+In this query string, we have 3 fields with their corresponding values. In the query string, pairs of string are placed after the `?` and separated by `&`. Each pair is defined as `field=value`. To get a specific value in the query string, as defined in the `getSuccess()` function in [`controllers\successController.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/controllers/successController.js) shown above, we can access them through the `req.query` object. For example, we can access the value of the field `fName` by `req.query.fName`.
+
+The web application should display the success screen. This screen displays a welcome message - displaying the first name, the last name, and a link to the profile of the registered user.
 
 The picture below displays the success screen for the details that we have entered earlier:
 ![alt text](https://github.com/arvention/ccapdev-mongoose/blob/master/success.png "Success Page")
