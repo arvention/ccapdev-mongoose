@@ -20,6 +20,7 @@ app.set('view engine', 'hbs');
 // sets `/views/partials` as folder containing partial hbs files
 hbs.registerPartials(__dirname + '/views/partials');
 
+// parses incoming requests with urlencoded payloads
 app.use(express.urlencoded({extended: true}));
 
 // set the folder `public` as folder containing static assets
