@@ -37,28 +37,31 @@ const signupController = {
         var idNum = req.body.idNum;
         var pw = req.body.pw;
 
+        var user = {
+            fName: fName,
+            lName: lName,
+            idNum: idNum,
+            pw: pw
+        }
+
         /*
             calls the function insertOne()
             defined in the `database` object in `../models/db.js`
             this function adds a document to collection `users`
         */
-        db.insertOne(User, {
-            fName: fName,
-            lName: lName,
-            idNum: idNum,
-            pw: pw
+        db.insertOne(User, user, function(flag) {
+            if(flag) {
+                /*
+                    upon adding a user to the database,
+                    redirects the client to `/success` using HTTP GET,
+                    defined in `../routes/routes.js`
+                    passing values using URL
+                    which calls getSuccess() method defined in `./successController.js`
+                */
+                res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
+            }
         });
-
-        /*
-            upon adding a user to the database,
-            redirects the client to `/success` using HTTP GET,
-            defined in `../routes/routes.js`
-            passing values using URL
-            which calls getSuccess() method defined in `./successController.js`
-        */
-        res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
     }
-
 }
 
 /*
