@@ -27,10 +27,10 @@ const signupController = {
 
         /*
             when submitting forms using HTTP POST method
-            the values in the input fields are stored in the req.body object
+            the values in the input fields are stored in `req.body` object
             each <input> element is identified using its `name` attribute
             Example: the value entered in <input type="text" name="fName">
-            can be retrieved using req.body.fName
+            can be retrieved using `req.body.fName`
         */
         var fName = req.body.fName;
         var lName = req.body.lName;
@@ -56,7 +56,8 @@ const signupController = {
                     redirects the client to `/success` using HTTP GET,
                     defined in `../routes/routes.js`
                     passing values using URL
-                    which calls getSuccess() method defined in `./successController.js`
+                    which calls getSuccess() method
+                    defined in `./successController.js`
                 */
                 res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
             }
