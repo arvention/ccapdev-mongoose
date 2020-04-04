@@ -28,7 +28,7 @@ const profileController = {
             defined in the `database` object in `../models/db.js`
             this function searches the collection `users`
             based on the value set in object `query`
-            the third parameter is a string containing the fields to be returned
+            the third parameter is a string containing fields to be returned
             the fourth parameter is a callback function
             this called when the database returns a value
             saved in variable `result`
