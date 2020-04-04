@@ -16,37 +16,51 @@ const profileController = require('../controllers/profileController.js');
 
 const app = express();
 
-// execute function getFavicon()
-// defined in object `controller` in `../controllers/controller.js`
-// when a client sends an HTTP GET request for `/favicon.ico`
+/*
+    execute function getFavicon()
+    defined in object `controller` in `../controllers/controller.js`
+    when a client sends an HTTP GET request for `/favicon.ico`
+*/
 app.get('/favicon.ico', controller.getFavicon);
 
-// execute function getIndex()
-// defined in object `controller` in `../controllers/controller.js`
-// when a client sends an HTTP GET request for `/`
+/*
+    execute function getIndex()
+    defined in object `controller` in `../controllers/controller.js`
+    when a client sends an HTTP GET request for `/`
+*/
 app.get('/', controller.getIndex);
 
-// execute function getSignUp()
-// defined in object `signupController` in `../controllers/signupController.js`
-// when a client sends an HTTP GET request for `/signup`
+/*
+    execute function getSignUp()
+    defined in object `signupController` in `../controllers/signupController.js`
+    when a client sends an HTTP GET request for `/signup`
+*/
 app.get('/signup', signupController.getSignUp);
 
-// execute function postSignUp()
-// defined in object `signupController` in `../controllers/signupController.js`
-// when a client sends an HTTP POST request for `/signup`
+/*
+    execute function postSignUp()
+    defined in object `signupController` in `../controllers/signupController.js`
+    when a client sends an HTTP POST request for `/signup`
+*/
 app.post('/signup', signupController.postSignUp);
 
-// execute function getSuccess()
-// defined in object `successController` in `../controllers/successController.js`
-// when a client sends an HTTP GET request for `/success`
+/*
+    execute function getSuccess()
+    defined in object `successController` in `../controllers/successController.js`
+    when a client sends an HTTP GET request for `/success`
+*/
 app.get('/success', successController.getSuccess);
 
-// execute function getProfile()
-// defined in object `profileController` in `../controllers/profileController.js`
-// when a client sends an HTTP GET request for `/profile/:idNum`
-// where `idNum` is a parameter
+/*
+    execute function getProfile()
+    defined in object `profileController` in `../controllers/profileController.js`
+    when a client sends an HTTP GET request for `/profile/:idNum`
+    where `idNum` is a parameter
+*/
 app.get('/profile/:idNum', profileController.getProfile);
 
-// exports the object `app` (defined above)
-// when another script exports from this file
+/*
+    exports the object `app` (defined above)
+    when another script exports from this file
+*/
 module.exports = app;
