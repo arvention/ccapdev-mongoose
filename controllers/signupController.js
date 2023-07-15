@@ -23,7 +23,7 @@ const signupController = {
         executed when the client sends an HTTP POST request `/signup`
         as defined in `../routes/routes.js`
     */
-    postSignUp: function (req, res) {
+    postSignUp: async function (req, res) {
 
         /*
             when submitting forms using HTTP POST method
@@ -49,19 +49,23 @@ const signupController = {
             defined in the `database` object in `../models/db.js`
             this function adds a document to collection `users`
         */
-        db.insertOne(User, user, function(flag) {
-            if(flag) {
-                /*
-                    upon adding a user to the database,
-                    redirects the client to `/success` using HTTP GET,
-                    defined in `../routes/routes.js`
-                    passing values using URL
-                    which calls getSuccess() method
-                    defined in `./successController.js`
-                */
-                res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
-            }
-        });
+        var response = await db.insertOne(User, user);
+
+        /*
+            upon adding a user to the database,
+            redirects the client to `/success` using HTTP GET,
+            defined in `../routes/routes.js`
+            passing values using URL
+            which calls getSuccess() method
+            defined in `./successController.js`
+        */
+
+        if(response != null){
+            res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
+        }
+        else {
+            res.render('error');
+        }
     }
 }
 

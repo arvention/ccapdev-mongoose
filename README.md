@@ -65,21 +65,28 @@ app.post('/signup', signupController.postSignUp);
 When the server receives an HTTP POST request for the path `/signup`, it executes the function `postSignUp()`. Check the file [`controllers/signUpController.js`](https://github.com/arvention/ccapdev-mongoose/blob/master/controllers/signUpController.js) and focus on the function `postSignUp()`. Shown below is the function as excerpted from the file:
 
 ```
-postSignUp: function (req, res) {
+postSignUp: async function (req, res) {
 
     var fName = req.body.fName;
     var lName = req.body.lName;
     var idNum = req.body.idNum;
     var pw = req.body.pw;
 
-    db.insertOne(User, {
+    var user = {
         fName: fName,
         lName: lName,
         idNum: idNum,
         pw: pw
-    });
+    }
 
-    res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
+    var response = await db.insertOne(User, user);
+
+    if(response != null){
+        res.redirect('/success?fName=' + fName +'&lName=' + lName + '&idNum=' + idNum);
+    }
+    else {
+        res.render('error');
+    }
 }
 ```
 
